@@ -1,5 +1,6 @@
 import { MongoClient, ObjectId } from "mongodb";
 import MerchItems from "./MerchItems";
+import { Suspense } from "react";
 
 async function getMerchItems() {
   const mongo = new MongoClient(process.env.MONGO_URI)
@@ -68,6 +69,8 @@ export default async function MerchPage({ params }) {
   const { merch, categories, filteredCategories } = await getMerchItems()
 
   return (
-    <MerchItems merch={merch} categories={categories} filteredCategories={filteredCategories} />
+    <Suspense fallback={<main className="grid place-items-center min-h-full p-5 py-12 lg:py-24">Loading...</main>}>
+      <MerchItems merch={merch} categories={categories} filteredCategories={filteredCategories} />
+    </Suspense>
   )
 }
