@@ -21,10 +21,10 @@ export default function DesktopNav() {
         <li className="py-6"><Link href="/blog" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Blog</Link></li>
         <li className="relative w-[199px] justify-self-center pt-6">
           <Link href="/" className="absolute">
-            <img src="/img/pa-logo-white-388w.png" alt="home" width="199" />
+            <img src="/img/pa-logo-white-388w.png" alt="home" width="199" className="" />
           </Link>
         </li>
-        <li className="py-6"><Link href="/shows" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Shows</Link></li>
+        <li className="py-6 -mr-5"><Link href="/shows" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Shows</Link></li>
         <GalleryLink />
         <li className="py-6"><Link href="/merch" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Merch</Link></li>
       </ul>
