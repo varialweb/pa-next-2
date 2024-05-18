@@ -2,12 +2,16 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { addToCart } from "./AddToCart"
+import { useRouter } from "next/navigation"
 
 export default function MerchItem({ item }) {
   const [currentImage, setCurrentImage] = useState(0)
   const [currentSize, setCurrentSize] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [maxQuantity, setMaxQuantity] = useState(1)
+
+  const router = useRouter()
 
   useEffect(() => {
     let hasMultipleSizes = Number(item.fields.sizeSmallStock) > 0 || Number(item.fields.sizeMediumStock) > 0 || Number(item.fields.sizeLargeStock) > 0 || Number(item.fields.sizeXLStock) > 0
@@ -57,7 +61,7 @@ export default function MerchItem({ item }) {
         </div>
         <div className="flex gap-2">
           {item.fields.images.map((image, index) => (
-            <button className={`border p-2 ${currentImage === index ? 'border-orange-500' : 'border-gray-500'}`} onClick={() => setCurrentImage(index)}>
+            <button key={image.url} className={`border p-2 ${currentImage === index ? 'border-orange-500' : 'border-gray-500'}`} onClick={() => setCurrentImage(index)}>
               <img src={image.url} alt={image.alt} width="40" />
             </button>
           ))}
@@ -88,7 +92,22 @@ export default function MerchItem({ item }) {
         </div>
         {maxQuantity < 5 && <p className="mb-2">Only {maxQuantity} left in stock!</p>}
       </div>
-      <button className="bg-orange-600 p-3 mt-4">Add to cart</button>
+      <button 
+        className="bg-orange-600 p-3 mt-4" 
+        onClick={async () => {
+          await addToCart({ 
+            _id: item._id,
+            name: currentSize ? (
+              currentSize === 'small' ? `${item.fields.name} - Small` : currentSize === 'medium' ? `${item.fields.name} - Medium` : currentSize === 'large' ? `${item.fields.name} - Large` : `${item.fields.name} - XL`
+            ) : item.fields.name,
+            quantity: quantity,
+          })
+          .then(() => {
+            router.push('/cart')
+          })
+        }}>
+          Add to cart
+        </button>
     </div>
   )
 } 

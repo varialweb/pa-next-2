@@ -7,8 +7,8 @@ import { useState } from "react";
 export default function DesktopNav() {
   const pathname = usePathname()
   return (
-    <div className="hidden lg:block text-2xl bg-zinc-950 shadow-lg px-4">
-      <ul className="flex justify-between  max-w-6xl 2xl:max-w-7xl mx-auto">
+    <div className="hidden lg:flex text-2xl bg-zinc-950 shadow-lg px-4 justify-center">
+      <ul className="flex justify-between w-full max-w-6xl 2xl:max-w-7xl -mr-6">
         <li className="py-6">
           <Link 
             href="/" 
@@ -24,7 +24,7 @@ export default function DesktopNav() {
             <img src="/img/pa-logo-white-388w.png" alt="home" width="199" className="" />
           </Link>
         </li>
-        <li className="py-6 -mr-5"><Link href="/shows" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Shows</Link></li>
+        <li className="py-6"><Link href="/shows" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Shows</Link></li>
         <GalleryLink />
         <li className="py-6"><Link href="/merch" className="underline decoration-transparent underline-offset-8 hover:decoration-orange-400">Merch</Link></li>
       </ul>
