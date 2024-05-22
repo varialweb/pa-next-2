@@ -8,11 +8,11 @@
   }
 
   h1 {
-    @apply text-5xl font-bold;
+    @apply text-5xl font-bold leading-none;
   }
 
   h2 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold leading-none;
   }
 
   
