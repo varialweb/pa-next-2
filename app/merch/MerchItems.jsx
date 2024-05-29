@@ -40,7 +40,7 @@ export default function MerchItems({ merch, categories, filteredCategories }) {
 
   return (
     <main className="grid place-items-center min-h-full p-5 py-12 lg:py-24">
-      <div className="bg-zinc-800 p-5 w-full grid gap-4 max-w-6xl">
+      <div className="bg-zinc-900 shadow-2xl p-5 w-full grid gap-4 max-w-6xl">
         <h1 className={`${metalMania.className} text-center`}>Merch</h1>
         <div className="flex gap-2 justify-center">
           <Link href="/merch" className={`${!searchParams.get('category') && 'text-orange-500'}`}>All merch</Link>
@@ -52,9 +52,9 @@ export default function MerchItems({ merch, categories, filteredCategories }) {
         </div>
         <div className="grid md:grid-cols-2 gap-8 lg:grid-cols-3">
           {filteredItems.map(item => (
-            <div key={item._id} className="bg-zinc-700 max-w-lg">
-              <div className="bg-zinc-600 p-4">
-                <img src={item.fields.images[0].url} alt={item.fields.images[0].alt} width={item.fields.images[0].width} />
+            <div key={item._id} className="bg-zinc-800 max-w-lg">
+              <div className="bg-zinc-700 p-4">
+                <img src={item.fields.images[0].url} alt={item.fields.images[0].alt} width={item.fields.images[0].width} className="object-contain aspect-[4/3]" />
               </div>
               <div className="p-4 w-full flex flex-col">
                 <h2>{item.fields.name}</h2>

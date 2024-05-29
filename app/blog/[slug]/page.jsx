@@ -1,6 +1,29 @@
 import { MongoClient, ObjectId } from "mongodb"
 import RichText from "./RichText"
 
+export const revalidate = 120
+
+export async function generateMetadata({ params }) {
+  const mongo = new MongoClient(process.env.MONGO_URI)
+  let post = {}
+
+  try {
+    await mongo.connect()
+    const client = mongo.db('VarialCMS')
+
+    post = await client.collection('contents').findOne({ 'fields.url': params.slug })
+
+    mongo.close()
+  } catch (error) {
+    console.error('Error loading merch item', error)
+  }
+
+  return {
+    title: `${post.fields.title} - Blog - Primordial Atrocity`,
+    description: post.fields.description,
+  }
+}
+
 async function getBlogPost(slug) {
   const mongo = new MongoClient(process.env.MONGO_URI)
 

@@ -1,6 +1,29 @@
 import { MongoClient } from "mongodb"
 import MerchItem from "./MerchItem"
 
+export const revalidate = 0
+
+export async function generateMetadata({ params }) {
+  const mongo = new MongoClient(process.env.MONGO_URI)
+  let item = {}
+
+  try {
+    await mongo.connect()
+    const client = mongo.db('VarialCMS')
+
+    item = await client.collection('contents').findOne({ 'fields.url': params.slug })
+
+    mongo.close()
+  } catch (error) {
+    console.error('Error loading merch item', error)
+  }
+
+  return {
+    title: `${item.fields.name} - Merch - Primordial Atrocity`,
+    description: item.fields.description,
+  }
+}
+
 async function getMerchItem(url) {
   const mongo = new MongoClient(process.env.MONGO_URI)
   let item = {}

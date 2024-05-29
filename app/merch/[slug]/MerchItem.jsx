@@ -57,7 +57,7 @@ export default function MerchItem({ item }) {
       </div>
       <div className="flex flex-col gap-2">
         <div className="bg-zinc-800 p-5 shadow-inner">
-          <img src={item.fields.images[currentImage].url} alt={item.fields.images[currentImage].alt} width={item.fields.images[currentImage].width} className="w-full" />
+          <img src={item.fields.images[currentImage].url} alt={item.fields.images[currentImage].alt} width={item.fields.images[currentImage].width} className="w-full aspect-[4/3] object-contain" />
         </div>
         <div className="flex gap-2">
           {item.fields.images.map((image, index) => (
@@ -83,7 +83,7 @@ export default function MerchItem({ item }) {
             name="quantiy"
             id="quantity"
             type="number"
-            min="0"
+            min="1"
             max={maxQuantity}
             value={quantity}
             onChange={event => setQuantity(event.target.value)}
@@ -106,7 +106,7 @@ export default function MerchItem({ item }) {
             router.push('/cart')
           })
         }}>
-          Add to cart
+          Add to cart (${((quantity * Number(item.fields.price)) / 100).toFixed(2)})
         </button>
     </div>
   )
