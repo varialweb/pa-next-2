@@ -94,7 +94,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-full grid place-items-center p-5 py-16 md:py-24">
+    <main className="min-h-full grid place-items-center p-5 py-16 md:py-24 bg-[url('https://media.primordial-atrocity.band/images/art/pa-molested-divinity/v1')] bg-contain md:bg-cover">
       <div className="bg-zinc-900 shadow-2xl p-5 md:max-w-xl">
         <h1 className={`${metalMania.className} text-center`}>News</h1>
         <hr className="my-4" />

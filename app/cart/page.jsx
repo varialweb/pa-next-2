@@ -87,7 +87,7 @@ export default async function CartPage() {
               return (
                 <div key={item.name} className="bg-zinc-800 p-4 md:p-4 grid gap-4 relative w-full max-w-2xl">
                   <h2 className="text-lg text-center">{item.name}</h2>
-                  <img src={image.url} alt={image.alt} width="375" className="justify-self-center" />
+                  <img src={image.url} alt={image.alt} width="375" className="justify-self-center aspect-square object-contain bg-zinc-700 p-5" />
                   <div className="flex flex-col gap-1">
                     <p className="text-sm">Price: ${`${price.slice(0, price.length - 2)}.${price.slice(price.length - 2, price.length)}`}</p>
                     <p className="text-sm">Quantity: {item.quantity}</p>
@@ -98,10 +98,10 @@ export default async function CartPage() {
               )})
             }
             <div className="flex flex-col items-end w-full">
-              <p>Subtotal: ${`${getSubtotal() / 100}`}</p>
-              <p>Tax: ${getTax() / 100}</p>
-              <p>Shipping ${getShipping() / 100}</p>
-              <p>Total: ${getTotal() / 100}</p>
+              <p>Subtotal: ${`${(getSubtotal() / 100).toFixed(2)}`}</p>
+              <p>Tax: ${(getTax() / 100).toFixed(2)}</p>
+              <p>Shipping ${(getShipping() / 100).toFixed(2)}</p>
+              <p>Total: ${(getTotal() / 100).toFixed(2)}</p>
             </div>
             <Link href="/checkout" className="bg-orange-600 px-6 py-2 text-lg w-full max-w-2xl text-center">Checkout</Link>
           </>

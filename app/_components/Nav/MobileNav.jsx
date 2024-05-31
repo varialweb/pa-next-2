@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import CartIcon from "./CartIcon"
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -11,11 +12,9 @@ export default function MobileNav() {
         <img src="/img/icon_hamburger.svg" alt="menu" width="28" />
       </button>
       <div className="w-[160px] relative">
-        <img src="/img/pa-logo-white-388w.png" alt="" width="160" className="absolute -top-4" />
+        <img src="https://media.primordial-atrocity.band/images/branding/pa-logo-2024/v1?w=320" alt="" width="160" className="absolute -top-12" />
       </div>
-      <Link href="/cart">
-        <img src="/img/icon_cart.svg" alt="cart" width="28" />
-      </Link>
+      <CartIcon />
       {open && (
         <div className="fixed w-5/6 h-screen top-0 left-0 bg-zinc-950 shadow-lg py-6 px-5 flex flex-col gap-6">
           <button onClick={() => setOpen(!open)}>
