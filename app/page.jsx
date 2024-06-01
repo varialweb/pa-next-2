@@ -71,7 +71,10 @@ export default async function Home() {
     return (
       <div className="w-full grid gap-4 bg-zinc-800 p-5 shadow-2xl">
         {latestGallery.fields.images.map(image => (
-          <img key={image.url} src={image.url} alt={image.alt} width={375} className="w-full aspect-[4/3] object-cover hover:object-contain bg-zinc-900 shadow-2xl" />
+          <picture>
+            <source srcSet={`${image.url}?w=1024`} media="(min-width: 768px)" />
+            <img key={image.url} src={`${image.url}?w=750`} alt={image.alt} width={375} className="w-full aspect-[4/3] object-cover hover:object-contain bg-zinc-900 shadow-2xl" />
+          </picture>
         ))}
       </div>
     )
@@ -80,7 +83,10 @@ export default async function Home() {
   function LatestMerch() {
     return (
       <div className="w-full grid gap-4 bg-zinc-800 p-5 shadow-2xl">
-        <img src={latestMerch.fields.images[0].url} className="aspect-[4/3] object-contain bg-zinc-700 p-2.5" />
+        <picture>
+        <source srcSet={`${latestMerch.fields.images[0].url}?w=1024`} media="(min-width: 768px)" />
+          <img src={`${latestMerch.fields.images[0].url}?w=750`} className="aspect-[4/3] object-contain bg-zinc-700 p-2.5" />
+        </picture>
         <div>
           <h3 className="text-2xl font-medium">{latestMerch.fields.name}</h3>
           <p>${(Number(latestMerch.fields.price) / 100).toFixed(2)}</p>

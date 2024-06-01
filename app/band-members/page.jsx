@@ -42,7 +42,9 @@ export default async function BandMembersPage() {
         <div className="flex flex-col lg:flex-row gap-2.5">
           {bandMembers.map(member => (
             <div key={member._id} className="p-5 bg-zinc-800 text-center grid gap-2.5">
-              <img src={member.fields.coverPhoto.url} alt={member.fields.coverPhoto.alt} width={350} className="" />
+              <picture>
+                <img src={`${member.fields.coverPhoto.url}?w=750`} alt={member.fields.coverPhoto.alt} width={350} className="" />
+              </picture>
               <h2>{member.fields.name}</h2>
               <p className="text-sm italic">Joined {new Date(member.fields.startDate).toLocaleDateString()}</p>
               {member.fields.bio && <p>{member.fields.bio}</p>}

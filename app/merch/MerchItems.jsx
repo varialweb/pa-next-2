@@ -54,7 +54,7 @@ export default function MerchItems({ merch, categories, filteredCategories }) {
           {filteredItems.map(item => (
             <div key={item._id} className="bg-zinc-800 max-w-lg">
               <div className="bg-zinc-700 p-4">
-                <img src={item.fields.images[0].url} alt={item.fields.images[0].alt} width={item.fields.images[0].width} className="object-contain aspect-[4/3]" />
+                <img src={`${item.fields.images[0].url}?w=750`} alt={item.fields.images[0].alt} width={item.fields.images[0].width} className="object-contain aspect-[4/3]" />
               </div>
               <div className="p-4 w-full flex flex-col">
                 <h2>{item.fields.name}</h2>

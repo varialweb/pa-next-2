@@ -57,12 +57,15 @@ export default function MerchItem({ item }) {
       </div>
       <div className="flex flex-col gap-2">
         <div className="bg-zinc-800 p-5 shadow-inner">
-          <img src={item.fields.images[currentImage].url} alt={item.fields.images[currentImage].alt} width={item.fields.images[currentImage].width} className="w-full aspect-[4/3] object-contain" />
+          <picture>
+            <source srcSet={`${item.fields.images[currentImage].url}?w=1024`} media="(min-width: 768px)" />
+            <img src={`${item.fields.images[currentImage].url}?w=750`} alt={item.fields.images[currentImage].alt} width={item.fields.images[currentImage].width} className="w-full aspect-[4/3] object-contain" />
+          </picture>
         </div>
         <div className="flex gap-2">
           {item.fields.images.map((image, index) => (
             <button key={image.url} className={`border p-2 ${currentImage === index ? 'border-orange-500' : 'border-gray-500'}`} onClick={() => setCurrentImage(index)}>
-              <img src={image.url} alt={image.alt} width="40" />
+              <img src={`${image.url}?w=80`} alt={image.alt} width="40" />
             </button>
           ))}
         </div>

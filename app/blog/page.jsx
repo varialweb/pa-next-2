@@ -78,7 +78,11 @@ export default async function BlogPage() {
               </div>
             </div>
             <div className="bg-zinc-700 grid place-items-center aspect-video object-cover shadow-inner">
-              <img src={blogPost.fields.coverPhoto.url} alt="" width="" className="shadow-inner" />
+              <picture className="w-full grid place-items-center object-cover">
+                <source srcSet={`${blogPost.fields.coverPhoto.url}?w=1800`} media="(min-width: 1280px)" />
+                <source srcSet={`${blogPost.fields.coverPhoto.url}?w=1350`} media="(min-width: 768px)" />
+                <img src={`${blogPost.fields.coverPhoto.url}?w=750`} alt="" width="375" className="shadow-inner md:w-full aspect-video object-cover" />
+              </picture>
             </div>
             <p>{blogPost.fields.description + '..'}</p>
             <Link href={`/blog/${blogPost.fields.url}`} className="button">Read more</Link>
