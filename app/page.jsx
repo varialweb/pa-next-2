@@ -85,7 +85,7 @@ export default async function Home() {
       <div className="w-full grid gap-4 bg-zinc-800 p-5 shadow-2xl">
         <picture>
         <source srcSet={`${latestMerch.fields.images[0].url}?w=1024`} media="(min-width: 768px)" />
-          <img src={`${latestMerch.fields.images[0].url}?w=750`} className="aspect-[4/3] object-contain bg-zinc-700 p-2.5" />
+          <img src={`${latestMerch.fields.images[0].url}?w=750`} alt={latestMerch.fields.images[0].alt} className="aspect-[4/3] object-contain bg-zinc-700 p-2.5" />
         </picture>
         <div>
           <h3 className="text-2xl font-medium">{latestMerch.fields.name}</h3>
