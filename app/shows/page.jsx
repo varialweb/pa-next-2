@@ -37,7 +37,7 @@ export default async function ShowsPage() {
 
   console.log('gigs', gigs)
   return (
-    <main className="grid place-items-center min-h-full p-5 py-16">
+    <main className="grid place-items-center min-h-full p-5 py-16 md:py-24">
       <div className="bg-zinc-900 p-5 lg:p-8 shadow-2xl w-full max-w-md lg:max-w-4xl grid gap-2.5 lg:gap-8">
         <h1 className={`${metalMania.className} text-center`}>Shows</h1>
         {gigs.map(gig => (
